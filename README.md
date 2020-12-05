@@ -5,13 +5,26 @@ a module, a class, a function or a single row. The idea here is to profile only 
 
 ### Installation
 
+perf_tool is tested on python 2.7, 3.6, 3.7, 3.8 
+
+```
 > pip install perf_tool
-
-After installation you can try to run this simple bu exaustive example
 ```
 
-```
+After installation you can try to run a little example:
 
+```
+$ curl https://raw.githubusercontent.com/glaucouri/perf_tool/master/example.py > perf_tool_sample.py
+$ python perf_tool_sample.py 
+================== PerfTool ==================
+task                     |aver(s) |sum(s)  |count   |std     
+main                     |   0.065|   0.065|       1|   0.000
+  +-call                 |   0.050|   0.050|       1|   0.000
+    +-body               |   0.050|   0.050|       1|   0.000
+  +-row                  |   0.001|   0.014|      10|   0.000
+
+overall                  |    0.04|    0.06|      13|-       
+```
 
 ### Description
 I have often been faced with the problem of performance on very challanging scope.
@@ -44,7 +57,9 @@ until individual lines of code are identified.
 
 *perf_tool* has 2 sentinel:
 
+```
 > from perf_tool import PerfTool, perf_tool
+```
 
 * **PerfTool** Is a context manager 
 * **perf_tool** Is a function / method decorator
@@ -118,7 +133,7 @@ overall                  |    0.08|    0.21|     104|-
 ```
 
     
-Here a production examples
+Here a production use.
 
 ```
 task                     |aver(s) |sum(s)  |count   |std     
