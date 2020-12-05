@@ -3,6 +3,16 @@ Another **time performance** tool for python.
 It is the right support tool if you need to profile an entire program, some piece of code, 
 a module, a class, a function or a single row. The idea here is to profile only the code **you want** to profile.
 
+### Installation
+
+> pip install perf_tool
+
+After installation you can try to run this simple bu exaustive example
+```
+
+```
+
+
 ### Description
 I have often been faced with the problem of performance on very challanging scope.
 
