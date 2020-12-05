@@ -1,5 +1,5 @@
 ## perf_tool
-Another time performance tool for python.
+Another **time performance** tool for python.
 It is the right support tool if you need to profile an entire program, some piece of code, 
 a module, a class, a function or a single row. The idea here is to profile only the code **you want** to profile.
 
@@ -8,14 +8,17 @@ I have often been faced with the problem of performance on very challanging scop
 
 In many cases difficult if given by:
 
-* intrinsic complexity of algorithms, in this cases, piece of codes can't be explained with a right asymptotic representations  
-  aka [Big O notation](https://en.wikipedia.org/wiki/Big_O_notation)
+* intrinsic complexity of algorithms, in this cases, piece of codes can't be explained with a right asymptotic 
+representations aka [Big O notation](https://en.wikipedia.org/wiki/Big_O_notation)
+
 * domain not fully known, yes! if you don't know exacty how and why the developer has done some choices each row of code 
-  can be interpreted as an error candidate.
-* [coupling with data](https://en.wikipedia.org/wiki/Coupling_(computer_programming)), sometimes algorithms is too much i
-  ntricated with data, the result is a spaghetti code.
+can be interpreted as an error candidate.
+  
+* [coupling with data](https://en.wikipedia.org/wiki/Coupling_(computer_programming)), sometimes algorithms is too much
+intricated with data, the result is an unreadable spaghetti code.
+
 * use of external framework like Pandas, Scipy, Numpy. In these cases is not simple get a correct idea of where is spent 
-  computational time.
+computational time.
 
 In these cases [computational analysis](https://en.wikipedia.org/wiki/Computational_complexity) can be misleading,
 on the other hands [python profiler](https://docs.python.org/3.7/library/profile.html) is too dispersive so juggling 
