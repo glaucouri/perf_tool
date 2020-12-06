@@ -16,38 +16,39 @@ perf_tool is tested on python 2.7, 3.6, 3.7, 3.8
 > pip install perf_tool
 ```
 
-To run all the tests run:
+To run all the tests run *pytest* or tox for *multiversion*:
 
 ```
-> tox
+> tox 
+or
+> pytest
 ```
 
 ### Description
-I have often been faced with the problem of performance on very challanging scope.
+I have often been faced with the problem of performance, on very challanging scope.
 
 In many cases difficult if given by:
 
-* intrinsic complexity of algorithms, in this cases, piece of codes can't be explained with a right asymptotic 
+* intrinsic complexity of algorithms, in this cases, piece of codes can't be explained easily with a right asymptotic 
 representations aka [Big O notation](https://en.wikipedia.org/wiki/Big_O_notation)
 
-* domain not fully known, yes! if you don't know exacty how and why the developer has done some choices each row of code 
-can be interpreted as an error candidate.
+* domain not fully known , yes! when the code is not yours, if you don't know exactly how and why the developer has done 
+some choices each row of code can be interpreted as an error candidate.
   
 * [coupling with data](https://en.wikipedia.org/wiki/Coupling_(computer_programming)), sometimes algorithms is too much
-intricated with data, the result is an unreadable spaghetti code.
+intricate with data, the result is an unreadable spaghetti code.
 
 * use of external framework like Pandas, Scipy, Numpy. In these cases is not simple get a correct idea of where is spent 
 computational time.
 
 In these cases [computational analysis](https://en.wikipedia.org/wiki/Computational_complexity) can be misleading,
 on the other hands [python profiler](https://docs.python.org/3.7/library/profile.html) is too dispersive so juggling 
-with performance tools give to us very counterintuitive reports.
-
+with performance tools give to us very counterintuitive results.
 
 ### How it works
-When you profile a program your need is to construct a metric that can tell you where the time is spent.
-So at the beginning you must put **sentinels** in the entry point in order to create main metrics.
-Gradually you put other  *sentinels* in the most relevant section of codes, increasing the capillarity 
+When you profile a program your first need is to construct a metric that can tell you where the time is spent.
+So at the beginning you must put **sentinels** in the entry point, like constructors or functions, in order to create 
+main metrics. Gradually you nest other *sentinels* in the most relevant section of codes, increasing the capillarity 
 until individual lines of code are identified.
 
 
@@ -58,11 +59,11 @@ until individual lines of code are identified.
 ```
 
 * **PerfTool** Is a context manager 
-* **perf_tool** Is a function / method decorator
+* **perf_tool** Is a function or method decorator
 
-each *Sentinel* will cover a piece of code, and for that, records how many time is spent on it. 
+each *Sentinel* cover a piece of code, and for that, records how many time is spent on it. 
 
-With a function we can print a report containing 4 columns:
+Finally we can print a report containing 4 columns:
 
 * task: task label or name, it is set when you put the sentinel, i suggest to use mnemonic label
 * aver(s): mean of time spent ove the piece of code.
@@ -70,26 +71,7 @@ With a function we can print a report containing 4 columns:
 * count: how many times that sentinel was called
 * std: standard deviation
 
-*Sentinels* can be nested in order to represent the hierarchy of code 
-
-
-### Examples
-After installation you can try to run a little example:
-
-```
-$ curl https://raw.githubusercontent.com/glaucouri/perf_tool/master/example.py > perf_tool_sample.py
-$ python perf_tool_sample.py 
-================== PerfTool ==================
-task                     |aver(s) |sum(s)  |count   |std     
-main                     |   0.065|   0.065|       1|   0.000
-  +-call                 |   0.050|   0.050|       1|   0.000
-    +-body               |   0.050|   0.050|       1|   0.000
-  +-row                  |   0.001|   0.014|      10|   0.000
-
-overall                  |    0.04|    0.06|      13|-       
-```
-
-
+The hierarchy of the *Sentinels*, that can be nested, is mainteined in order to represent the code structure. 
 
 
 First step is to put root sentinels: 
@@ -133,21 +115,24 @@ def main():
       <some code part 3b>
 ```
 
-In the last example output is (times are mock)
+
+### Examples
+After installation you can try to run a little example and see the report:
 
 ```
+$ curl https://raw.githubusercontent.com/glaucouri/perf_tool/master/example.py > perf_tool_sample.py
+$ python perf_tool_sample.py 
+================== PerfTool ==================
 task                     |aver(s) |sum(s)  |count   |std     
-main                     |   0.209|   0.209|       1|   0.000
-  +-preparation          |   0.013|   0.013|       1|   0.000
-  +-calculus             |   0.030|   0.030|       1|   0.000
-  +-output               |   0.166|   0.166|       1|   0.000
-    +-row write          |   0.001|   0.143|     100|   0.000
+main                     |   0.065|   0.065|       1|   0.000
+  +-call                 |   0.050|   0.050|       1|   0.000
+    +-body               |   0.050|   0.050|       1|   0.000
+  +-row                  |   0.001|   0.014|      10|   0.000
 
-overall                  |    0.08|    0.21|     104|-       
+overall                  |    0.04|    0.06|      13|-       
 ```
 
-    
-Here a production use.
+Here a production use case.
 
 ```
 task                     |aver(s) |sum(s)  |count   |std     
