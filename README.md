@@ -1,7 +1,6 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/perf_tool)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/glaucouri/perf_tool)
-.. image:: https://img.shields.io/travis/glaucouri/perf_tool   :alt: Travis (.org)
-.. image:: https://img.shields.io/gitlab/coverage/glaucouri/perf_tool/master   :alt: Gitlab code coverage
+![Travis (.com)](https://img.shields.io/travis/com/glaucouri/perf_tool)
 
 
 ## perf_tool
