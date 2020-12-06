@@ -1,3 +1,6 @@
+[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+
+
 ## perf_tool
 Another **time performance** tool for python.
 It is the right support tool if you need to profile an entire program, some piece of code, 
@@ -11,19 +14,10 @@ perf_tool is tested on python 2.7, 3.6, 3.7, 3.8
 > pip install perf_tool
 ```
 
-After installation you can try to run a little example:
+To run all the tests run:
 
 ```
-$ curl https://raw.githubusercontent.com/glaucouri/perf_tool/master/example.py > perf_tool_sample.py
-$ python perf_tool_sample.py 
-================== PerfTool ==================
-task                     |aver(s) |sum(s)  |count   |std     
-main                     |   0.065|   0.065|       1|   0.000
-  +-call                 |   0.050|   0.050|       1|   0.000
-    +-body               |   0.050|   0.050|       1|   0.000
-  +-row                  |   0.001|   0.014|      10|   0.000
-
-overall                  |    0.04|    0.06|      13|-       
+> tox
 ```
 
 ### Description
@@ -76,7 +70,25 @@ With a function we can print a report containing 4 columns:
 
 *Sentinels* can be nested in order to represent the hierarchy of code 
 
+
 ### Examples
+After installation you can try to run a little example:
+
+```
+$ curl https://raw.githubusercontent.com/glaucouri/perf_tool/master/example.py > perf_tool_sample.py
+$ python perf_tool_sample.py 
+================== PerfTool ==================
+task                     |aver(s) |sum(s)  |count   |std     
+main                     |   0.065|   0.065|       1|   0.000
+  +-call                 |   0.050|   0.050|       1|   0.000
+    +-body               |   0.050|   0.050|       1|   0.000
+  +-row                  |   0.001|   0.014|      10|   0.000
+
+overall                  |    0.04|    0.06|      13|-       
+```
+
+
+
 
 First step is to put root sentinels: 
 
