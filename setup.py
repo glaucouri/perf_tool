@@ -13,7 +13,7 @@ setuptools.setup(
     description="Performance investigation tool",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://https://github.com/glaucouri/perf_tool",
+    url="https://github.com/glaucouri/perf_tool",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 2.7",
